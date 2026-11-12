@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:agent-agreement-black-box:0.1:record",
+  "title": "Agent Agreement Black Box record (spec v0.1)",
+  "description": "One entry of a hash-chained, Ed25519-signed log of what two agents agreed.",
+  "type": "object",
+  "required": ["spec", "chain_id", "seq", "prev_hash", "ts", "type", "author", "content", "signatures", "entry_hash"],
+  "additionalProperties": false,
+  "properties": {
+    "spec": {"const": "agent-agreement-black-box/0.1"},
+    "chain_id": {"type": "string", "minLength": 4},
+    "seq": {"type": "integer", "minimum": 0},
+    "prev_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$", "description": "entry_hash of the previous entry; 64 zeros for genesis"},
+    "ts": {"type": "string", "format": "date-time", "description": "UTC, claimed by the author (not a trusted timestamp)"},
+    "type": {"enum": ["genesis", "proposal", "counter", "agreement", "amendment", "termination", "seal"]},
+    "author": {"type": "string", "pattern": "^ed25519:[0-9a-f]{16}$"},
+    "content": {
+      "type": "object",
+      "description": "Type-specific. Raw messages are NEVER stored: use payload_sha256. A human-readable summary is allowed only with consent_to_publish_summary=true and must match summary_sha256.",
+      "properties": {
+        "payload_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "summary": {"type": "string", "maxLength": 2000},
+        "summary_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "consent_to_publish_summary": {"type": "boolean"},
+        "parties": {
+          "type": "array", "minItems": 2,
+          "items": {"type": "object", "required": ["kid", "name", "pubkey"],
+                    "properties": {"kid": {"type": "string"}, "name": {"type": "string"}, "pubkey": {"type": "string", "description": "raw Ed25519 public key, base64url"}, "agent_card": {"type": "string", "format": "uri"}}}
+        }
+      }
+    },
+    "signatures": {
+      "type": "array", "minItems": 1,
+      "items": {"type": "object", "required": ["kid", "alg", "sig"],
+                "properties": {"kid": {"type": "string"}, "alg": {"const": "Ed25519"}, "sig": {"type": "string", "description": "base64url Ed25519 signature over canonical JSON of the entry without signatures and entry_hash"}}}
+    },
+    "entry_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$", "description": "SHA-256 of canonical JSON of the entry without entry_hash (signatures included)"}
+  }
+}

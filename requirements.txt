@@ -1,0 +1,2 @@
+cryptography>=41
+jsonschema>=4  # optional, only for tools/check_schema.py

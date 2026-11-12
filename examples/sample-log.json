@@ -1,0 +1,136 @@
+[
+  {
+    "spec": "agent-agreement-black-box/0.1",
+    "chain_id": "demo-545ea95f6fb7",
+    "seq": 0,
+    "prev_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+    "ts": "2026-11-11T22:00:00Z",
+    "type": "genesis",
+    "author": "ed25519:21845dcb5d4a287a",
+    "content": {
+      "purpose": "Record of an agreement between two fictional demo agents",
+      "parties": [
+        {
+          "kid": "ed25519:21845dcb5d4a287a",
+          "name": "Guia Demo Bot (fictional)",
+          "pubkey": "k4GJXA_nXgkxv_E_N3CF9rgvHU-I19oBYoTd1ryZd9I"
+        },
+        {
+          "kid": "ed25519:3f45dbee221da802",
+          "name": "Quinta Exemplo Bot (fictional)",
+          "pubkey": "YFB4olJtWvFAAGzJykXJ484LeI5qqJXyyDsw_Ym6y-4"
+        }
+      ],
+      "privacy": "hashes-only for raw messages; summaries only with consent of both parties"
+    },
+    "signatures": [
+      {
+        "kid": "ed25519:21845dcb5d4a287a",
+        "alg": "Ed25519",
+        "sig": "LSYD2jMvOg65PX8gAeDsXk2cMS61kGN51D8Qfcv2e8SqRk6cTiiDWgwGscqpNqPTWLdIkWEjC7I9ylM0O6SODw"
+      },
+      {
+        "kid": "ed25519:3f45dbee221da802",
+        "alg": "Ed25519",
+        "sig": "oPvbvS9q-ZbqkjX9fZj-4Zd-bTtVEe-2qARzBHG0OLReIs8Jf6TclpFnU4pOaY5EOUvssV3aLKB2QmGEXBHJAw"
+      }
+    ],
+    "entry_hash": "96da88032cc6ec60678658e8a4d158fdb0b759766215169a65b06fa264a12704"
+  },
+  {
+    "spec": "agent-agreement-black-box/0.1",
+    "chain_id": "demo-545ea95f6fb7",
+    "seq": 1,
+    "prev_hash": "96da88032cc6ec60678658e8a4d158fdb0b759766215169a65b06fa264a12704",
+    "ts": "2026-11-11T22:01:00Z",
+    "type": "proposal",
+    "author": "ed25519:21845dcb5d4a287a",
+    "content": {
+      "payload_sha256": "e0b0f01adda9604b3399b7932670d58acb260bd89843098c411b98a6dbfa75fe"
+    },
+    "signatures": [
+      {
+        "kid": "ed25519:21845dcb5d4a287a",
+        "alg": "Ed25519",
+        "sig": "vcMfFr6lS2o3nLy7oOiLNLXZoZw39L3fQmrybBFv0mlhQKZanTqxWPQNAo1R8lLEgH2h_L1_HDPeVA-Bjd63Dw"
+      }
+    ],
+    "entry_hash": "354aa1783acaad92a51a2ed2546e33679bf826bb2c8a7eaac7fd3685e79ce188"
+  },
+  {
+    "spec": "agent-agreement-black-box/0.1",
+    "chain_id": "demo-545ea95f6fb7",
+    "seq": 2,
+    "prev_hash": "354aa1783acaad92a51a2ed2546e33679bf826bb2c8a7eaac7fd3685e79ce188",
+    "ts": "2026-11-11T22:02:00Z",
+    "type": "counter",
+    "author": "ed25519:3f45dbee221da802",
+    "content": {
+      "payload_sha256": "b7ea47c342cb0fa615dcc67649bba6411179b8a6f26f64f27193bb1596657572"
+    },
+    "signatures": [
+      {
+        "kid": "ed25519:3f45dbee221da802",
+        "alg": "Ed25519",
+        "sig": "Uu_UhHILqb9EhyLME5LKCKAtXij-26jjIqlDQ2TL9WMFUKYpH4JU_R26kXaTZAar9J0fLTvFRGj1bzYJxysKBQ"
+      }
+    ],
+    "entry_hash": "f6098157d968d48b2e0457bdda28b78e3a5fd3df03f3efaa2de0edeeb34f647a"
+  },
+  {
+    "spec": "agent-agreement-black-box/0.1",
+    "chain_id": "demo-545ea95f6fb7",
+    "seq": 3,
+    "prev_hash": "f6098157d968d48b2e0457bdda28b78e3a5fd3df03f3efaa2de0edeeb34f647a",
+    "ts": "2026-11-11T22:03:00Z",
+    "type": "agreement",
+    "author": "ed25519:21845dcb5d4a287a",
+    "content": {
+      "summary": "Quinta Exemplo Bot (fictional) allows Guia Demo Bot to cite its harvest-visit hours with attribution and the date checked. Valid 2026-11-11 to 2026-12-31. No payment. Either party may end it with notice in this chain.",
+      "summary_sha256": "13867843873a491c83d005a0e3719a3bd58705b84e8b23671ed6e9f63db6bc57",
+      "consent_to_publish_summary": true,
+      "valid_from": "2026-11-11",
+      "valid_until": "2026-12-31",
+      "money": "none"
+    },
+    "signatures": [
+      {
+        "kid": "ed25519:21845dcb5d4a287a",
+        "alg": "Ed25519",
+        "sig": "_hlWxiGGx6yACajgtJxM7RtA5gxxnERx7qCr6pYL5qVJYe8-MbzJdj711BAhXyuzN6FF9FOf0ENhR-vdAnPnAg"
+      },
+      {
+        "kid": "ed25519:3f45dbee221da802",
+        "alg": "Ed25519",
+        "sig": "xstHwWUrwFk6BSyR4L5YLwYR3btEa_jpCXDWfo5Tk-jBYS3e8pEFwfYUxDzqJpSn5wZvXo3fsKaLbC7toA3nCw"
+      }
+    ],
+    "entry_hash": "58af9e4f3608878f5a84643a3a150820578e5282518b6258826d9126a6349ba4"
+  },
+  {
+    "spec": "agent-agreement-black-box/0.1",
+    "chain_id": "demo-545ea95f6fb7",
+    "seq": 4,
+    "prev_hash": "58af9e4f3608878f5a84643a3a150820578e5282518b6258826d9126a6349ba4",
+    "ts": "2026-11-11T22:04:00Z",
+    "type": "seal",
+    "author": "ed25519:3f45dbee221da802",
+    "content": {
+      "entries": 4,
+      "note": "chain closed by both parties"
+    },
+    "signatures": [
+      {
+        "kid": "ed25519:21845dcb5d4a287a",
+        "alg": "Ed25519",
+        "sig": "spLh2NeTuhaVeHXi_mgQg1Z4srQquXahFfU2c0p1jLjPSfIv0oZ2x9mQgphyPK2DhogcNOSfK20G_dY_XBS1CQ"
+      },
+      {
+        "kid": "ed25519:3f45dbee221da802",
+        "alg": "Ed25519",
+        "sig": "_7XL4UQ6b933yaEc9U_ca-bSLmYpUWUwEcP_haE7Mn0PzhDF9swqwNxoTlDXGK-pOXVTjN9MxMJrSYaCNhPyAw"
+      }
+    ],
+    "entry_hash": "44271f5b84076ce4a2adf7662b5d9045ee7c4df4d5e7b8d749efece7c1d2fef6"
+  }
+]

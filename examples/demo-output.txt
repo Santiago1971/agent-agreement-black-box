@@ -1,0 +1,61 @@
+Spec agent-agreement-black-box/0.1 - sample log with 5 entries written to examples/sample-log.json
+Head hash (what both agents would publish or anchor): 44271f5b84076ce4a2adf7662b5d9045ee7c4df4d5e7b8d749efece7c1d2fef6
+
+[PASS] 1. original log: VERIFY OK
+[PASS] privacy: raw messages stored in log? False
+[PASS] selective disclosure: revealed proposal matches its hash? True
+
+[PASS] 2. edit agreement date (no re-sign): TAMPER DETECTED
+      - entry 3 (agreement): entry_hash does not match content (entry was modified)
+      - entry 3 (agreement): INVALID signature by ed25519:21845dcb5d4a287a
+      - entry 3 (agreement): INVALID signature by ed25519:3f45dbee221da802
+      - entry 3 (agreement): author did not sign
+      - entry 3 (agreement): needs signatures of BOTH parties
+[PASS] 3. edit date and recompute entry_hash: TAMPER DETECTED
+      - entry 3 (agreement): INVALID signature by ed25519:21845dcb5d4a287a
+      - entry 3 (agreement): INVALID signature by ed25519:3f45dbee221da802
+      - entry 3 (agreement): author did not sign
+      - entry 3 (agreement): needs signatures of BOTH parties
+      - entry 4 (seal): prev_hash does not match hash of entry 3 (broken chain)
+[PASS] 4. delete the counter-proposal: TAMPER DETECTED
+      - entry 2 (agreement): seq 3 != position 2 (deleted/reordered entry)
+      - entry 2 (agreement): prev_hash does not match hash of entry 1 (broken chain)
+      - entry 3 (seal): seq 4 != position 3 (deleted/reordered entry)
+      - seal entry count does not match
+[PASS] 5. reorder entries: TAMPER DETECTED
+      - entry 1 (counter): seq 2 != position 1 (deleted/reordered entry)
+      - entry 1 (counter): prev_hash does not match hash of entry 0 (broken chain)
+      - entry 2 (proposal): seq 1 != position 2 (deleted/reordered entry)
+      - entry 2 (proposal): prev_hash does not match hash of entry 1 (broken chain)
+      - entry 3 (agreement): prev_hash does not match hash of entry 2 (broken chain)
+[PASS] 6. rewrite agreement and sign with a third key: TAMPER DETECTED
+      - entry 3 (agreement): signature by unknown key ed25519:1972da52ab087496
+      - entry 3 (agreement): author did not sign
+      - entry 3 (agreement): needs signatures of BOTH parties
+      - entry 4 (seal): prev_hash does not match hash of entry 3 (broken chain)
+[PASS] 7. truncate (drop seal): TAMPER DETECTED
+      - last entry is not a seal (log may be truncated)
+[PASS] 8. agreement with only one signature: TAMPER DETECTED
+      - entry 3 (agreement): needs signatures of BOTH parties
+      - entry 4 (seal): prev_hash does not match hash of entry 3 (broken chain)
+[PASS] 9. edit the genesis (parties/purpose): TAMPER DETECTED
+      - entry 0 (genesis): entry_hash does not match content (entry was modified)
+      - entry 0 (genesis): INVALID signature by ed25519:21845dcb5d4a287a
+      - entry 0 (genesis): INVALID signature by ed25519:3f45dbee221da802
+      - entry 0 (genesis): author did not sign
+      - entry 0 (genesis): needs signatures of BOTH parties
+
+SUMMARY: 11/11 checks behaved as expected
+
+--- CLI verify: original ---
+VERIFY OK
+--- CLI verify: tampered (expected to fail) ---
+TAMPER DETECTED
+ - entry 3 (agreement): entry_hash does not match content (entry was modified)
+ - entry 3 (agreement): INVALID signature by ed25519:21845dcb5d4a287a
+ - entry 3 (agreement): INVALID signature by ed25519:3f45dbee221da802
+ - entry 3 (agreement): author did not sign
+ - entry 3 (agreement): needs signatures of BOTH parties
+(exit 1 as expected)
+--- schema ---
+schema OK for 5 entries in sample-log.json
