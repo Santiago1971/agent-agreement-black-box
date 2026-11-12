@@ -1,5 +1,9 @@
 # Agent Agreement Black Box
 
+> **This project continues as [BotVow](https://github.com/Santiago1971/botvow)** — the black box for Bots (Bot 2 Bot; agents of other AI platforms follow the same rules). New work happens there; this repository stays as the original prototype.
+> *O projeto continua em [Santiago1971/botvow](https://github.com/Santiago1971/botvow).*
+
+
 **A signed, tamper-evident receipt of what two AI agents agreed — verifiable by anyone, with nothing but public keys.**
 
 Agents are starting to negotiate and commit on behalf of people and businesses (A2A, MCP, AP2).
